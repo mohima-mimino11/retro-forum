@@ -1,0 +1,3 @@
+const loadPosts = async () =>{
+  
+}

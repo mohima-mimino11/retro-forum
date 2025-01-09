@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +7,84 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
   <!-- DAISY UI AND TAILWIND -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Document</title>
+    <!-- fontawesome
+    <script src="https://kit.fontawesome.com/0a1c131728.js" crossorigin="anonymous"></script> -->
+  <title>Retro Forum</title>
 </head>
-<body>
+<body class="font-mulish bg-white">
+  <!-- navbar and banner -->
+  <header>
+    <nav class="flex justify-between items-center px-[136px] pt-[55px]">
+      <h2 class="text-4xl">ReTro</h2>
+      <div>
+        <ul class="flex justify-between gap-3">
+          <li class="bg-[#12132D08] border border-solid border-[#0307121A] rounded-[50px] py-[18px] px-[16px] tooltip" data-tip="home"> <img src="images/nav-icons/Frame.png" alt=""> </li>
+          <li class="bg-[#12132D08] border border-solid border-[#0307121A] rounded-[50px] py-[18px] px-[16px] tooltip" data-tip="tooltip"><img src="images/nav-icons/Frame-2.png" alt=""></i></li>
+          <li class="bg-[#12132D08] border border-solid border-[#0307121A] rounded-[50px] py-[18px] px-[16px] tooltip" data-tip="sign up"><img src="images/nav-icons/Frame -3.png" alt=""></li>
+          <li class="bg-[#12132D08] border border-solid border-[#0307121A] rounded-[50px] py-[18px] px-[16px] tooltip" data-tip="about us"><img src="images/nav-icons/Frame-4.png" alt=""></i></li>
+          <button class="btn bg-[#797DFC] text-white rounded-[50px] text-xl px-[40px]  text-center">Sign In</button>
+        </ul>
+      </div>
+    </nav>
+    <div  class="mt-14 px-[135px]">
+    <img class="bg-[#12132D] w-full rounded-[32px]" src="images/bgbanner.png" alt="">
+    <div class="mx-[100px] -mt-[379px] flex justify-between items-center">
+      <div class="space-y-6">
+        <h2 class="text-6xl text-white ">Welcome to the <br> <span class="text-[#ccFFFFFF]">ReTro</span> Forum</h2>
+        <p class="text-xl text-white">Share your favorite opinion and win and wp <br> forum coffee mug!</p>
+        <div class="">
+          <input  type="text" placeholder="Search" class="input input-bordered w-full max-w-xs"/>
+          <button id="post-category" class="btn bg-[#797DFC] rounded-[46px] text-xl text-white">Search</button>
+        </div>
+        
+      </div>
+      <div class="bg-white w-[371px] h-[288px] rounded-[32px]">
+          <div class="grid grid-cols-2 justify-items-center content-center gap-x-14 gap-y-6 p-12">
+            <p class="text-2xl">Registers</p>
+            <p class="text-2xl">01</p>
+            <p class="text-2xl">Forum</p>
+            <p class="text-2xl">02</p>
+            <p class="text-2xl">Topics</p>
+            <p class="text-2xl">05</p>
+            <p class="text-2xl">Replies</p>
+            <p class="text-2xl">01</p>
+          </div>
+      </div>
+    </div>
+    
+
+    </div>
+
+  </header>
+  <main>
+    <!-- discussion section  -->
+    <section class="mt-[100px]">
+     <div class="text-center mt-[100px] space-y-4 ">
+      <h3 class="text-4xl">Let's Discuss</h3>
+      <p class="font-inter text-lg text-gray-500">Yes, you can run unit tests and view the results directly within the app. The <br> integrated testing features allow for a streamlined .</p>
+     </div>
+     <div id="all-posts" class="mt-12">
+
+     </div>
+    </section>
+
+    <!-- join forum section  -->
+
+
+    <!-- latest posts section  -->
+
+  </main>
+
+  <!-- footer section  -->
+  <footer>
+
+  </footer>
   
+
 
 
 
