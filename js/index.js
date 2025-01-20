@@ -103,7 +103,7 @@ const displayLatestPosts = (posts) => {
   // console.log(posts);
   // get each post for creating cards
   posts.forEach(post => {
-    console.log(post);
+    // console.log(post);
     // get the element for creating cards
     const latestPosts = document.getElementById('latest-posts-cards');
     // create new div
@@ -125,8 +125,8 @@ const displayLatestPosts = (posts) => {
             <div class="flex gap-4">
                 <img src="${post?.profile_image}" class="w-[44px] h-[44px] rounded-full">
                 <div>
-                  <h5 className="text-base">${post?.author?.name}</h5>
-                  <p className="text-sm">${post?.author?.designation || "Unknown"}</p>
+                  <h5 class="text-base">${post?.author?.name}</h5>
+                  <p class="text-sm text-[#12132D99]">${post?.author?.designation || "Unknown"}</p>
                 </div>
             </div>
           </div>
