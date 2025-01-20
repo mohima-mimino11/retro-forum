@@ -89,7 +89,64 @@ const displayPosts = (posts) =>{
 
 }
 
+// load latest posts api
+const loadLatestPosts = async () =>{
+  const res = await fetch (`https://openapi.programming-hero.com/api/retro-forum/latest-posts`);
+  const data = await res.json();
+  const posts = data;
+  // console.log(posts);
+  displayLatestPosts(posts)
+}
+
+// display latest posts
+const displayLatestPosts = (posts) => {
+  // console.log(posts);
+  // get each post for creating cards
+  posts.forEach(post => {
+    console.log(post);
+    // get the element for creating cards
+    const latestPosts = document.getElementById('latest-posts-cards');
+    // create new div
+    const latestPostsDiv = document.createElement('div');
+    // set classLists and innerHTML
+    latestPostsDiv.classList = `card bg-base-100 w-96 shadow-xl`
+    latestPostsDiv.innerHTML = `
+      <div>
+          <figure class="px-10 pt-10">
+            <img
+              src="${post?.cover_image}"
+              alt="Shoes"
+              class="rounded-xl" />
+          </figure>
+          <div class="card-body">
+            <p class="text-[#12132D99] text-base">${post?.author?.posted_date || "No Publish Date"}</p>
+            <h2 class="card-title text-lg">${post?.title}</h2>
+            <p class="text-[#12132D99] text-base">${post?.description}</p>
+            <div class="flex gap-4">
+                <img src="${post?.profile_image}" class="w-[44px] h-[44px] rounded-full">
+                <div>
+                  <h5 className="text-base">${post?.author?.name}</h5>
+                  <p className="text-sm">${post?.author?.designation || "Unknown"}</p>
+                </div>
+            </div>
+          </div>
+      </div>
+
+               
+    
+          
+    
+    `;
+    // appendchild to the parent latestPosts
+    latestPosts.appendChild(latestPostsDiv);
+    
+  })
+  
+
+}
 
 
 
-loadPosts()
+loadPosts();
+
+loadLatestPosts();
