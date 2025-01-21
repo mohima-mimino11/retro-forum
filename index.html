@@ -39,8 +39,8 @@
         <h2 class="text-6xl text-white ">Welcome to the <br> <span class="text-[#ccFFFFFF]">ReTro</span> Forum</h2>
         <p class="text-xl text-white">Share your favorite opinion and win and wp <br> forum coffee mug!</p>
         <div class="">
-          <input  type="text" placeholder="Search" class="input input-bordered w-full max-w-xs"/>
-          <button id="post-category" class="btn bg-[#797DFC] rounded-[46px] text-xl text-white">Search</button>
+          <input  type="text" placeholder="Search" class="input input-bordered w-full max-w-xs" id="search-field"/>
+          <button id="post-category" onclick="handleSearch()" class="btn bg-[#797DFC] rounded-[46px] text-xl text-white">Search</button>
         </div>
         
       </div>
@@ -65,10 +65,14 @@
   <main>
     <!-- discussion section  -->
     <section class="mt-[100px]">
+     
      <div class="text-center mt-[100px] space-y-4 ">
       <h3 class="text-4xl">Let's Discuss</h3>
       <p class="font-inter text-lg text-gray-500">Yes, you can run unit tests and view the results directly within the app. The <br> integrated testing features allow for a streamlined .</p>
      </div>
+     <div id="loading-spinner" class="text-center hidden">
+      <span class="loading loading-spinner loading-lg"></span>
+    </div>
      <div class="px-[135px] mt-12 grid grid-cols-2 justify-items-center gap-x-14">
       <div id="all-posts" >
 

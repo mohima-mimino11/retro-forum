@@ -1,5 +1,5 @@
-const loadPosts = async () =>{
-  const res = await fetch (`https://openapi.programming-hero.com/api/retro-forum/posts`);
+const loadPosts = async (categoryName) =>{
+  const res = await fetch (`https://openapi.programming-hero.com/api/retro-forum/posts?category=${categoryName}`);
   const data = await res.json();
   const posts = data.posts;
   // console.log(posts);
@@ -45,7 +45,7 @@ const displayPosts = (posts) =>{
                ${post?.posted_time}
             </div>
             <div>
-              <img src="images/email 1.png" class="w-[28px] h-[28px] read-btn" >
+            <img src="images/email 1.png" class="w-[28px] h-[28px] read-btn" id="read-count-btn" onclick="readCountBtn()">
             </div>
       </div>
      
@@ -55,11 +55,40 @@ const displayPosts = (posts) =>{
     `
     // append new element inside the parent element
     allPosts.appendChild(postDiv);
-    
+  
+  const markAsReadBtn = document.getElementById('read-count-btn');
+  markAsReadBtn.addEventListener('click', (e) =>{
+    // get markAsRead parent elemenet
+    const markAsReadDiv = document.getElementById('read-count');
+    // create new element for the posts that are read
+    const postViewedDiv = document.createElement('div');
+    postViewedDiv.classList = `w-[326px] h-[82px] bg-white rounded-[16px] mx-[16px] my-[15px] space-y-[16px]`;
+    postViewedDiv.innerHTML = `
+        <div class="flex items-center gap-2">
+          <h2 class="text-sm">Title: ${post?.title}</h2>
+          <img src="images/tabler-icon-eye.png" class="w-[28px] h-[28px]">
+                ${post?.view_count}
+
+        </div>`
+    markAsReadDiv.appendChild(postViewedDiv);
+
+  })
+
+  
      
       
 
   })
+}
+
+
+const handleSearch = () =>{
+  // toggleLoadingSpinner(true)
+  const searchField = document.getElementById('search-field');
+  const categoryName = searchField.value;
+  searchField.value = '';
+  console.log(categoryName);
+  loadPosts(categoryName);
   // get markAsRead parent elemenet
   const markAsRead = document.getElementById('read-count');
   // create new element for the posts that are read
@@ -75,17 +104,28 @@ const displayPosts = (posts) =>{
       </div>
     `;
   markAsRead.appendChild(readCountDiv);
+}
+
+const readCountBtn = () =>{
+
   
-    const readCountButtons = document.getElementsByClassName('read-btn');
-    const countResult = document.getElementById('count-result');
-    let count = 0;
-    for(let readCountButton of readCountButtons){
-      readCountButton.addEventListener('click', (e) =>{
-        count += 1;
-        // console.log(count);
-        countResult.innerHTML = count;
-      })
-    }
+  const readCountButtons = document.getElementsByClassName('read-btn');
+  
+  
+  const countResultElement = document.getElementById('count-result');
+  let count = 0;
+  for(let readCountButton of readCountButtons){
+    console.log(readCountButton);
+    
+    count += 1;
+    countResultElement.innerHTML = count;
+
+  }
+ 
+  
+
+  
+  
 
 }
 
@@ -93,16 +133,16 @@ const displayPosts = (posts) =>{
 const loadLatestPosts = async () =>{
   const res = await fetch (`https://openapi.programming-hero.com/api/retro-forum/latest-posts`);
   const data = await res.json();
-  const posts = data;
+  const latestPosts = data;
   // console.log(posts);
-  displayLatestPosts(posts)
+  displayLatestPosts(latestPosts)
 }
 
 // display latest posts
-const displayLatestPosts = (posts) => {
+const displayLatestPosts = (latestPosts) => {
   // console.log(posts);
   // get each post for creating cards
-  posts.forEach(post => {
+  latestPosts.forEach(latestPost => {
     // console.log(post);
     // get the element for creating cards
     const latestPosts = document.getElementById('latest-posts-cards');
@@ -114,19 +154,19 @@ const displayLatestPosts = (posts) => {
       <div>
           <figure class="px-10 pt-10">
             <img
-              src="${post?.cover_image}"
+              src="${latestPost?.cover_image}"
               alt="Shoes"
               class="rounded-xl" />
           </figure>
           <div class="card-body">
-            <p class="text-[#12132D99] text-base">${post?.author?.posted_date || "No Publish Date"}</p>
-            <h2 class="card-title text-lg">${post?.title}</h2>
-            <p class="text-[#12132D99] text-base">${post?.description}</p>
+            <p class="text-[#12132D99] text-base">${latestPost?.author?.posted_date || "No Publish Date"}</p>
+            <h2 class="card-title text-lg">${latestPost?.title}</h2>
+            <p class="text-[#12132D99] text-base">${latestPost?.description}</p>
             <div class="flex gap-4">
-                <img src="${post?.profile_image}" class="w-[44px] h-[44px] rounded-full">
+                <img src="${latestPost?.profile_image}" class="w-[44px] h-[44px] rounded-full">
                 <div>
-                  <h5 class="text-base">${post?.author?.name}</h5>
-                  <p class="text-sm text-[#12132D99]">${post?.author?.designation || "Unknown"}</p>
+                  <h5 class="text-base">${latestPost?.author?.name}</h5>
+                  <p class="text-sm text-[#12132D99]">${latestPost?.author?.designation || "Unknown"}</p>
                 </div>
             </div>
           </div>
